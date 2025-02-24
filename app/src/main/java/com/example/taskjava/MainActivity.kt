@@ -28,9 +28,14 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+        println("-------------------task1---------------------")
         task1()
 
+        println("-------------------task2---------------------")
         task2()
+
+        println("-------------------task3---------------------")
+        task3()
     }
 }
 
@@ -62,4 +67,19 @@ fun task2() {
     Thread.sleep(2000)
 
     worker.shutdown()
+}
+
+fun task3() {
+    val text = "hello world"
+
+    val root = Huffman.buildHuffmanTree(text)
+
+    val codeMap = mutableMapOf<Char, String>()
+    Huffman.generateCodes(root, "", codeMap)
+
+    val encodedText = Huffman.encodeText(text, codeMap)
+    println("Закодированный текст: $encodedText")
+
+    val decodedText = Huffman.decodeText(encodedText, root)
+    println("Декодированный текст: $decodedText")
 }
