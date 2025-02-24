@@ -20,28 +20,23 @@ class MainActivity : ComponentActivity() {
         setContent {
             TaskJavaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    Text(
+                        text = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
         }
+
+        task1()
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun task1() {
+    val arr = intArrayOf(10, 7, 8, 9, 1, 5)
+    println("Исходный массив: ${arr.joinToString(", ")}")
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TaskJavaTheme {
-        Greeting("Android")
-    }
+    QuickSort.quickSort(arr, 0, arr.size - 1)
+
+    println("Отсортированный массив: ${arr.joinToString(", ")}")
 }
