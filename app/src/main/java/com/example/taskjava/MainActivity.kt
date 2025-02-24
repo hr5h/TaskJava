@@ -29,6 +29,8 @@ class MainActivity : ComponentActivity() {
         }
 
         task1()
+
+        task2()
     }
 }
 
@@ -39,4 +41,25 @@ fun task1() {
     QuickSort.quickSort(arr, 0, arr.size - 1)
 
     println("Отсортированный массив: ${arr.joinToString(", ")}")
+}
+
+fun task2() {
+    val worker = WorkerThread()
+    worker.start()
+
+    worker.execute {
+        println("Задача 1 выполняется")
+        Thread.sleep(1000)
+        println("Задача 1 завершена")
+    }
+
+    worker.execute {
+        println("Задача 2 выполняется")
+        Thread.sleep(500)
+        println("Задача 2 завершена")
+    }
+
+    Thread.sleep(2000)
+
+    worker.shutdown()
 }
